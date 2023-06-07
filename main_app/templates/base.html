@@ -8,14 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <title>ClanPlan - Family Planner</title>
+    <title>ClanPlan: Family Planner</title>
 </head>
 <body>
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">ClanPlan - Family Planner</a></li>
+                    <li><a href="{% url 'home' %}" class="left brand-logo">ClanPlan: Family Planner</a></li>
+                </ul>
+                <ul class="right">
+                    <li><a href="{% url 'index' %}">Events</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,7 +30,7 @@
     </main>
     
     <footer class="page-footer">
-        <div class="right">&copy; 2023 Copyright: ClanPlan - Family Planner &nbsp;</div>
+        <div class="right">&copy; 2023 Copyright: ClanPlan: Family Planner &nbsp;</div>
     </footer>
 </body>
 </html>
