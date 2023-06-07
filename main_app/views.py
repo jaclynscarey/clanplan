@@ -22,3 +22,13 @@ def events_detail(request, event_id):
 class EventCreate(CreateView):
     model = Event
     fields = '__all__'
+
+class EventUpdate(UpdateView):
+    model = Event
+    fields = '__all__'
+
+class EventDelete(DeleteView):
+    model = Event
+    fields = '__all__'
+    success_url = '/events/'
+
