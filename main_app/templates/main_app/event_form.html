@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Add Event" class="btn">
+</form>
+
+<script>
+    const dateEl = document.getElementById('id_date');
+    const timeEl = document.getElementById('id_time');
+    M.Datepicker.init(dateEl, {
+        format: 'mmm dd, yyyy',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    });
+    M.Timepicker.init(timeEl, {
+        defaultTime: 'now',
+        twelveHour: false,
+        autoClose: true
+    });
+</script>
+
+{% endblock %}

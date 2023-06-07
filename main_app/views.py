@@ -1,3 +1,5 @@
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from .models import Event
 
@@ -17,3 +19,6 @@ def events_detail(request, event_id):
         'event': event
         })
 
+class EventCreate(CreateView):
+    model = Event
+    fields = '__all__'
