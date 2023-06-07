@@ -11,7 +11,11 @@
                 <p>{{ event.date }}</p>
                 <p>{{ event.time }}</p>
                 <p>{{ event.location }}</p>
-                <p>{{ event.description|linebreaks }}</p>
+                <p>{{ event.description }}</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url 'events_update' event.id %}">Edit</a>
+                <a href="{% url 'events_delete' event.id %}">Delete</a>
             </div>
         </div>
     </div>
