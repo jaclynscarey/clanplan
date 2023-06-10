@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>ClanPlan: Family Planner</title>
 </head>
@@ -20,14 +21,14 @@
                 </ul>
                 <ul class="right">
                     {% if user.is_authenticated %}
-                        <li>Welcome, {{ user.first_name }}!</li>
-                        <li><a href="{% url 'index' %}">Events</a></li>
-                        <li><a href="{% url 'events_create' %}">New Event</a></li>
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li>Welcome, {{ user.first_name }}!</li>
+                    <li><a href="{% url 'index' %}">Events</a></li>
+                    <li><a href="{% url 'events_create' %}">New Event</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
-                        <li><a href="{% url 'login' %}">Login</a></li>
-                        <li><a href="{% url 'signup' %}">Signup with a New Family</a></li>
-                        <li><a href="{% url 'join_family' %}">Signup with an Existing Family</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Signup with a New Family</a></li>
+                    <li><a href="{% url 'join_family' %}">Signup with an Existing Family</a></li>
                     {% endif %}
                 </ul>
             </div>
