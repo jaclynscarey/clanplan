@@ -13,6 +13,8 @@ class ExtendedUserCreationForm(UserCreationForm):
 
 class UserProfileForm(ExtendedUserCreationForm):
     birthday = forms.DateField(required=True)
+    family_name = forms.CharField(required=True)
+    family_code = forms.CharField(required=True)
 
     class Meta(ExtendedUserCreationForm.Meta):
         model = User
@@ -30,14 +32,16 @@ class UserProfileForm(ExtendedUserCreationForm):
             user_profile = UserProfile(user=user, birthday=birthday)
             user_profile.save()
 
-            # Additional logic to create Attendee
+            # logic to create Attendee
             attendee = Attendee(user=user)
             attendee.save()
             
+            # logic to create Family
+            name = self.cleaned_data['family_name']
+            family_code = self.cleaned_data['family_code']
+            family = Family(name=name, family_code=family_code, admin=user)
+            family.save()
+            family.memberships.add(user_profile)
+            family.save()
+
         return user
-
-# class FamilyForm(forms.ModelForm):
-#     name = forms.CharField(required=True)
-#     family_code = forms.CharField(required=True)
-
-
