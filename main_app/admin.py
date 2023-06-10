@@ -1,8 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import Event, CustomUser
-from main_app.models import CustomUser
+from .models import Event, Family, UserProfile, Attendee
 
 # Register your models here.
-admin.site.register(CustomUser, UserAdmin)
-admin.site.register(Event)
+admin.site.register([Event, Family, UserProfile, Attendee])
