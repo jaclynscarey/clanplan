@@ -11,4 +11,16 @@
   <input type="submit" class="btn" value="Sign Up">
 </form>
 
+
+<script>
+  const dateEl = document.getElementById('id_birthday');
+
+  M.Datepicker.init(dateEl, {
+      format: 'mmm dd, yyyy',
+      setDefaultDate: true,
+      autoClose: true,
+      yearRange: 100,
+  });
+
+</script>
 {% endblock %}

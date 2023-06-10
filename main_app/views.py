@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .models import Event
-from .forms import ExtendedUserCreationForm
+from .forms import UserProfileForm
 
 def home(request):
     return render(request, 'home.html')
@@ -26,7 +26,7 @@ def events_detail(request, event_id):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = ExtendedUserCreationForm(request.POST)
+        form = UserProfileForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -34,7 +34,7 @@ def signup(request):
         else:
             error_message = 'Invalid sign up - try again'
 
-    form = ExtendedUserCreationForm()
+    form = UserProfileForm()
     context = {
         'form': form, 
         'error_message': error_message
