@@ -11,7 +11,8 @@ def home(request):
 
 @login_required
 def events_index(request):
-    events = Event.objects.all()
+    user_family = request.user.userprofile.family
+    events = Event.objects.filter(user__userprofile__family=user_family)
     return render(request, 'events/index.html', {
         'events': events
         })
