@@ -36,12 +36,12 @@ class UserProfileForm(ExtendedUserCreationForm):
             attendee = Attendee(user=user)
             attendee.save()
             
-            # logic to create Family
+            # Logic to create Family
             name = self.cleaned_data['family_name']
             family_code = self.cleaned_data['family_code']
             family = Family(name=name, family_code=family_code, admin=user)
             family.save()
-            family.memberships.add(user_profile)
-            family.save()
+            user_profile.family = family
+            user_profile.save()
 
         return user
