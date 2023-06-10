@@ -35,7 +35,7 @@ class Event(models.Model):
         return reverse('detail', kwargs={'event_id': self.id})
     
 class Attendee(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     event = models.ManyToManyField(Event, blank=True)
     
     def __str__(self):

@@ -30,16 +30,14 @@ class UserProfileForm(ExtendedUserCreationForm):
             user_profile = UserProfile(user=user, birthday=birthday)
             user_profile.save()
 
-            # Additional logic to link user to Family and create Attendee if needed
-
+            # Additional logic to create Attendee
+            attendee = Attendee(user=user)
+            attendee.save()
+            
         return user
-
-
 
 # class FamilyForm(forms.ModelForm):
 #     name = forms.CharField(required=True)
 #     family_code = forms.CharField(required=True)
 
 
-# class AttendeeForm(forms.ModelForm):
-#     pass
