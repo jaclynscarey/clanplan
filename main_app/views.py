@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .models import Event
+from .forms import ExtendedUserCreationForm
 
 def home(request):
     return render(request, 'home.html')
@@ -22,9 +23,27 @@ def events_detail(request, event_id):
         'event': event
         })
 
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = ExtendedUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid sign up - try again'
+
+    form = ExtendedUserCreationForm()
+    context = {
+        'form': form, 
+        'error_message': error_message
+        }
+    return render(request, 'registration/signup.html', context)
+
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
-    fields = ['title', 'description', 'date', 'time', 'location', 'attendees']
+    fields = ['title', 'description', 'date', 'time', 'location']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
