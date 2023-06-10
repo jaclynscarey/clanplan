@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login
 from .models import Event
-from .forms import UserProfileForm
+from .forms import NewFamilyForm, JoinFamilyForm
 from django.contrib.messages.views import SuccessMessageMixin
 def home(request):
     return render(request, 'home.html')
@@ -28,7 +28,7 @@ def events_detail(request, event_id):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = UserProfileForm(request.POST)
+        form = NewFamilyForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -36,12 +36,30 @@ def signup(request):
         else:
             error_message = 'Invalid sign up - try again'
 
-    form = UserProfileForm()
+    form = NewFamilyForm()
     context = {
         'form': form, 
         'error_message': error_message
         }
     return render(request, 'registration/signup.html', context)
+
+def join_family(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = JoinFamilyForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid family code - try again'
+
+    form = JoinFamilyForm()
+    context = {
+        'form': form,
+        'error_message': error_message
+        }
+    return render(request, 'registration/join_family.html', context)
 
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
