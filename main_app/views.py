@@ -2,10 +2,11 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import login
 from .models import Event
 from .forms import UserProfileForm
-
+from django.contrib.messages.views import SuccessMessageMixin
 def home(request):
     return render(request, 'home.html')
 
@@ -50,12 +51,33 @@ class EventCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)    
 
-class EventUpdate(LoginRequiredMixin, UpdateView):
+class EventUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Event
     fields = ['title', 'description', 'date', 'time', 'location', 'attendees']
+    success_message = "Event updated successfully."
+
+    def get(self, request, *args, **kwargs):
+        event = self.get_object()
+        if event.user != self.request.user:
+            messages.error(request, "You do not have permission to edit this event.")
+            return redirect('detail', event_id=event.id)
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        event = self.get_object()
+        if event.user != self.request.user:
+            messages.error(request, "You do not have permission to edit this event.")
+            return redirect('detail', event_id=event.id)
+        return super().post(request, *args, **kwargs)
 
 class EventDelete(LoginRequiredMixin, DeleteView):
     model = Event
     fields = '__all__'
     success_url = '/events/'
 
+    def dispatch(self, request, *args, **kwargs):
+        event = self.get_object()
+        if event.user != self.request.user:
+            messages.error(request, "You are not authorized to delete this event.")
+            return redirect('detail', event_id=event.id)
+        return super().dispatch(request, *args, **kwargs)

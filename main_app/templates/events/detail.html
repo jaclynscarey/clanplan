@@ -3,6 +3,12 @@
 
 <h1>Event Details</h1>
 
+{% if messages %}
+    {% for message in messages %}
+      <p{% if message.tags %} class="{{ message.tags }} red-text"{% endif %}>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
 <div class="row">
     <div class="col s6">
         <div class="card">
