@@ -20,6 +20,7 @@
                 </ul>
                 <ul class="right">
                     {% if user.is_authenticated %}
+                        <li>Welcome, {{ user.first_name }}!</li>
                         <li><a href="{% url 'index' %}">Events</a></li>
                         <li><a href="{% url 'events_create' %}">New Event</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
