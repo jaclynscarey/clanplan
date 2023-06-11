@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'ClanPlan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'clanplan',
+        'NAME': 'clan-plan',
     }
 }
 
