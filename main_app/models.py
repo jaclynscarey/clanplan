@@ -29,7 +29,7 @@ class Event(models.Model):
     attendees = models.ManyToManyField(UserProfile, blank=True)
     
     def __str__(self):
-        return self.title
+        return f"{self.title} - {self.date} at {self.time}"
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'event_id': self.id})
