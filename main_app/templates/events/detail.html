@@ -16,7 +16,7 @@
                 <span class="card-title">{{ event.title }}</span>
                 <p id="event-date" class="{{ event.date|date:'Y-m-d' }}">{{ event.date }}</p>
                 <p>{{ event.time }}</p>
-                <p>{{ event.location }}</p>
+                <p id="location">{{ event.location }}</p>
                 <p>{{ event.description }}</p>
             </div>
             <div class="card-action">
