@@ -5,7 +5,7 @@
 
 {% if messages %}
     {% for message in messages %}
-      <p{% if message.tags %} class="{{ message.tags }} red-text"{% endif %}>{{ message }}</p>
+        <p{% if message.tags %} class="{{ message.tags }} red-text"{% endif %}>{{ message }}</p>
     {% endfor %}
 {% endif %}
 
@@ -26,5 +26,8 @@
         </div>
     </div>
 </div>
+
+<!-- Placeholder for weather forecast -->
+<div id="weather-forecast"></div>
 
 {% endblock %}
