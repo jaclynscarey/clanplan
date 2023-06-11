@@ -21,7 +21,7 @@ if (navigator.geolocation) {
                     // Update the weather-forecast element in the detail.html page with the forecast data
                     const weatherForecastElement = document.getElementById('weather-forecast');
                     weatherForecastElement.innerHTML = `
-                        <h2>Weather Forecast</h2>
+                        <span class="card-title">Weather Forecast</span>
                         <p>Max Temperature: ${forecastData.temperature_2m_max[0]} °F</p>
                         <p>Min Temperature: ${forecastData.temperature_2m_min[0]} °F</p>
                         <p>Precipitation Probability: ${forecastData.precipitation_probability_max[0]}%</p>
