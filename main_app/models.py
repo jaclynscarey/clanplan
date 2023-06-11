@@ -39,4 +39,4 @@ class Attendee(models.Model):
     event = models.ManyToManyField(Event, blank=True)
     
     def __str__(self):
-        return f'{self.user} is attending {self.event}'
+        return f'{self.user.first_name} {self.user.last_name}'
