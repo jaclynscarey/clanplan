@@ -36,29 +36,51 @@ function getWeatherForecast(latitude, longitude) {
     });
 }
 
-// Get the user's current location
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        function(position) {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
+let address = document.getElementById('location').innerText;
+// Replace all spaces in address with +
+address = address.replace(/ /g, '+');
+console.log('Address:', address);
 
-            // Use the latitude and longitude values
+if (address) {
+    $.ajax({
+        url: `https://geocode.maps.co/search?q=${address}`,
+        method: 'GET',
+        success: function(response) {
+            const locationData = response[0];
+            console.log('Location Data:', locationData);
+
+            latitude = locationData.lat;
+            longitude = locationData.lon;
             console.log('Latitude:', latitude);
             console.log('Longitude:', longitude);
 
             // Call the function to fetch weather forecast
             getWeatherForecast(latitude, longitude);
         },
-        function(error) {
-            // Handle error if location retrieval fails
-            console.error('Error getting location:', error);
-
-            // Call the function to fetch weather forecast with empty latitude and longitude
-            getWeatherForecast('', '');
+        error: function(xhr, status, error) {
+            console.error('AJAX request failed. Status:', status);
+            console.error('Error:', error);
         }
-    );
+    });
 } else {
-    // Call the function to fetch weather forecast with empty latitude and longitude
-    getWeatherForecast('', '');
+    // Fallback to browser's geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+
+                // Use the latitude and longitude values
+                console.log('Latitude:', latitude);
+                console.log('Longitude:', longitude);
+
+                // Call the function to fetch weather forecast
+                getWeatherForecast(latitude, longitude);
+            },
+            function(error) {
+                // Handle error if location retrieval fails
+                console.error('Error getting location:', error);
+            }
+        );
+    }
 }
