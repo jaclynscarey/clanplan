@@ -8,7 +8,7 @@
         <a href="{% url 'detail' event.id %}">
             <div class="card-content center">
                 <span class="card-title">{{ event.title }}</span>
-                <p>{{ event.date }}</p>
+                <p>{{ event.date }} at {{ event.time }}</p>
             </div>
         </a>
     </div>

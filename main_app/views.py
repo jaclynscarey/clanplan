@@ -13,7 +13,7 @@ def home(request):
 @login_required
 def events_index(request):
     user_family = request.user.userprofile.family
-    events = Event.objects.filter(user__userprofile__family=user_family)
+    events = Event.objects.filter(user__userprofile__family=user_family).order_by('date', 'time')
     return render(request, 'events/index.html', {
         'events': events
         })
