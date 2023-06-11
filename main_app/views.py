@@ -4,9 +4,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login
-from .models import Event
+from .models import Event, Attendee
 from .forms import NewFamilyForm, JoinFamilyForm
 from django.contrib.messages.views import SuccessMessageMixin
+
 def home(request):
     return render(request, 'home.html')
 
@@ -21,9 +22,20 @@ def events_index(request):
 @login_required
 def events_detail(request, event_id):
     event = Event.objects.get(id=event_id)
+    id_list = event.attendees.all().values_list('id')
+    members_not_attending = Attendee.objects.exclude(id__in=id_list)
     return render(request, 'events/detail.html', {
-        'event': event
+        'event': event,
+        'members_not_attending': members_not_attending,
         })
+
+def assoc_attendee(request, event_id, attendee_id):
+    Event.objects.get(id=event_id).attendees.add(attendee_id)
+    return redirect('detail', event_id=event_id)
+
+def unassoc_attendee(request, event_id, attendee_id):
+    Event.objects.get(id=event_id).attendees.remove(attendee_id)
+    return redirect('detail', event_id=event_id)
 
 def signup(request):
     error_message = ''
