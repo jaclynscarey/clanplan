@@ -96,8 +96,8 @@ if (address) {
                 longitude = position.coords.longitude;
 
                 // Use the latitude and longitude values
-                console.log('Browser Latitude Inside Address AJAX:', latitude);
-                console.log('Browser Longitude Inside Address AJAX:', longitude);
+                console.log('Browser Latitude No Address:', latitude);
+                console.log('Browser Longitude No Address:', longitude);
 
                 // Call the function to fetch weather forecast
                 getWeatherForecast(latitude, longitude);
