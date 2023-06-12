@@ -16,7 +16,7 @@ function getWeatherForecast(latitude, longitude) {
         method: 'GET',
         success: function(response) {
             // Extract the relevant weather forecast data from the response
-            console.log('Weather forecast API response:', response);
+            console.log('Weather forecast API response:', response.daily);
             const forecastData = response.daily;
 
             // Update the weather-forecast element in the detail.html page with the forecast data
@@ -37,7 +37,7 @@ function getWeatherForecast(latitude, longitude) {
 
 let address = document.getElementById('location').innerText;
 // Replace all spaces in address with +
-address = address.replace(/ /g, '+');
+address = address.trim().replace(/ /g, '+');
 console.log('Address:', address);
 
 if (address) {
@@ -48,11 +48,31 @@ if (address) {
             const locationData = response[0];
             console.log('Location Data:', locationData);
 
-            latitude = locationData.lat;
-            longitude = locationData.lon;
-            console.log('Latitude:', latitude);
-            console.log('Longitude:', longitude);
-
+            if (locationData === undefined) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        latitude = position.coords.latitude;
+                        longitude = position.coords.longitude;
+        
+                        // Use the latitude and longitude values
+                        console.log('Browser Latitude Inside Address AJAX:', latitude);
+                        console.log('Browser Longitude Inside Address AJAX:', longitude);
+        
+                        // Call the function to fetch weather forecast
+                        getWeatherForecast(latitude, longitude);
+                    },
+                    function(error) {
+                        // Handle error if location retrieval fails
+                        console.error('Error getting location:', error);
+                    }
+                );
+            } else {
+                latitude = locationData.lat;
+                longitude = locationData.lon;
+                console.log('Address Latitude:', latitude);
+                console.log('Address Longitude:', longitude);
+            };
+            
             // Call the function to fetch weather forecast
             getWeatherForecast(latitude, longitude);
         },
@@ -70,8 +90,8 @@ if (address) {
                 longitude = position.coords.longitude;
 
                 // Use the latitude and longitude values
-                console.log('Latitude:', latitude);
-                console.log('Longitude:', longitude);
+                console.log('Browser Latitude:', latitude);
+                console.log('Browser Longitude:', longitude);
 
                 // Call the function to fetch weather forecast
                 getWeatherForecast(latitude, longitude);
@@ -81,5 +101,10 @@ if (address) {
                 console.error('Error getting location:', error);
             }
         );
+    } else {
+        latitude = 40.782864;
+        longitude = -73.965355;
+        console.log('Central Park Latitude:', latitude);
+        console.log('Central Park Longitude:', longitude);
     }
 }
