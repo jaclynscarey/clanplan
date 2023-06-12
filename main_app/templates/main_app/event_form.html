@@ -13,16 +13,6 @@
     {% endif %}
 </ol>
 
-<!-- <form class="form-group" method="post">
-    <fieldset>
-        {% csrf_token %}
-        <table>
-            {{ form }}
-        </table>
-        <button class="btn btn-primary" type="submit">{% if object %} Update Event {% else %} Add Event {% endif %}</button>
-    </fieldset>
-</form> -->
-
 <div class=" mx-5">
     <form method="POST" action="{% url 'events_create' %}">
         <fieldset>

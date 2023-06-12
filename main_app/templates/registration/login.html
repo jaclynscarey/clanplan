@@ -1,13 +1,50 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Log In</h1>
+<br><br>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active">Log In</li>
+</ol>
 
-<form method="post">
+<div class="mx-5">
+    <form method="POST" action="{% url 'login' %}">
+        <fieldset>
+            <legend>Log In</legend>
+            {% csrf_token %}
+    
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}" class="form-label mt-4">Username:</label>
+                {{ form.username }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}" class="form-label mt-4">Password</label>
+                {{ form.password }}
+            </div>
+
+            <br>
+            <button class="btn btn-primary" type="submit">Log In</button>
+        </fieldset>
+    </form>
+</div>
+
+
+<script>
+    const usernameEl = document.getElementById("id_username");
+    usernameEl.setAttribute("class", "form-control");
+
+    const passwordEl = document.getElementById("id_password");
+    passwordEl.setAttribute("class", "form-control");
+
+</script>
+
+
+<!-- <form method="post">
     {% csrf_token %}
     {{ form.as_p}}
     <input type="hidden" name="next" value="{{ next }}">
     <button type="submit">Log In</button>
-</form>
+</form> -->
 
 {% endblock %}
