@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
-{% block content%}
+{% load static %}
+{% block content %}
+<br><br>
 
-    <h1>Home</h1>
+<div class="card text-white bg-primary mb-3">
+    <h3 class="card-header ">Welcome to ClanPlan: Family Planner</h3>
+    <div class="card-body">
+        <h5 class="card-title">Organize and Plan Your Family Activities</h5>
+        <h6 class="card-subtitle">Stay on top of your family's schedule with ClanPlan</h6>
+    </div>
+    <img src="{% static 'images/calendar-banner.jpg' %}" class="card-img-top" alt="calendar banner">    
+    <div class="card-body">
+        <p class="card-text">ClanPlan is a powerful family planner app designed to help you and your family stay organized and manage your busy lives. With ClanPlan, you can easily schedule and coordinate events, keep track of important dates, and ensure everyone in your family is on the same page.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Effortlessly create and manage family events</li>
+        <li class="list-group-item">Invite family members and keep them informed</li>
+        <li class="list-group-item">Stay updated with event notifications and reminders <small class="text-muted">(Coming Soon!)</small></li>
+        
+    </ul>
+
+    <div class="card-footer">
+        We're here to simplify your family's planning journey!
+    </div>
+</div>
+<br><br>
 
 {% endblock %}
