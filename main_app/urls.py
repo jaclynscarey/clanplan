@@ -12,4 +12,5 @@ urlpatterns = [
     path('accounts/join_family/', views.join_family, name='join_family'),
     path('events/<int:event_id>/assoc_attendee/<int:attendee_id>/', views.assoc_attendee, name='assoc_attendee'),
     path('events/<int:event_id>/unassoc_attendee/<int:attendee_id>/', views.unassoc_attendee, name='unassoc_attendee'),
+    path('search/', views.search_events, name='search_events'),
 ]

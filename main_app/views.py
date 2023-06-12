@@ -7,9 +7,24 @@ from django.contrib.auth import login
 from .models import Event, Attendee
 from .forms import NewFamilyForm, JoinFamilyForm
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import Q
 
 def home(request):
     return render(request, 'home.html')
+
+def search_events(request):
+    if request.method == 'GET':
+        query = request.GET.get('search')
+        if query:
+            events = Event.objects.filter(Q(title__icontains=query))
+            if events:
+                # If events found, redirect to the event detail page of the first matching event
+                return redirect('detail', event_id=events[0].id)
+            else:
+                messages.info(request, 'No events found.')
+        else:
+            messages.info(request, 'Please enter a search query.')
+    return redirect('index')  # Redirect back to the events index page
 
 @login_required
 def events_index(request):
