@@ -6,6 +6,11 @@
 
 
 <ul class="list-group">
+    {% if not events %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        There are no events to in your agenda. Add one now!<a href="{% url 'events_create' %}">Add Event</a>
+    </li>
+    {% endif %}
     {% for event in events %}
     <a href="{% url 'detail' event.id %}">
         <li class="list-group-item {% cycle 'list-group-item-primary' 'list-group-item-secondary' 'list-group-item-info' 'list-group-item-warning' 'list-group-item-danger' %} d-flex justify-content-between align-items-center">
