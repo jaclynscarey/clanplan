@@ -52,13 +52,22 @@ async function getAddressLocation(address) {
         console.log('Location Data:', locationData);
 
         if (locationData === undefined) {
-            // Use browser's geolocation
-            const position = await getCurrentPosition();
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
 
-            console.log('Browser Latitude Inside Address Fetch:', latitude);
-            console.log('Browser Longitude Inside Address Fetch:', longitude);
+                    console.log('Browser Latitude Inside Address Fetch:', latitude);
+                    console.log('Browser Longitude Inside Address Fetch:', longitude);
+
+                    // Call the function to fetch weather forecast
+                    getWeatherForecast(latitude, longitude);
+                },
+                function(error) {
+                    // Handle error if location retrieval fails
+                    console.error('Error getting location:', error);
+                }
+            );
         } else {
             latitude = locationData.lat;
             longitude = locationData.lon;
@@ -73,12 +82,6 @@ async function getAddressLocation(address) {
     }
 }
 
-function getCurrentPosition() {
-    return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-}
-
 // Check if address is available
 const address = document.getElementById('location').innerText;
 
@@ -87,20 +90,23 @@ if (address) {
 } else {
     // Fallback to browser's geolocation
     if (navigator.geolocation) {
-        getCurrentPosition()
-        .then(position => {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
 
-            console.log('Browser Latitude:', latitude);
-            console.log('Browser Longitude:', longitude);
+                // Use the latitude and longitude values
+                console.log('Browser Latitude Inside Address AJAX:', latitude);
+                console.log('Browser Longitude Inside Address AJAX:', longitude);
 
-            // Call the function to fetch weather forecast
-            getWeatherForecast(latitude, longitude);
-        })
-        .catch(error => {
-            console.error('Error getting location:', error);
-        });
+                // Call the function to fetch weather forecast
+                getWeatherForecast(latitude, longitude);
+            },
+            function(error) {
+                // Handle error if location retrieval fails
+                console.error('Error getting location:', error);
+            }
+        );
     } else {
         latitude = 40.782864;
         longitude = -73.965355;
