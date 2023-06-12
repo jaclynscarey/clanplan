@@ -43,13 +43,7 @@
             {% for attendee in event.attendees.all %}
                 <div class="card">
                     <div class="card-content">
-                        <p>{{ attendee }}</p>
-                    </div>
-                    <div class="card-action">
-                        <form action="{% url 'unassoc_attendee' event.id attendee.id %}" method="post">
-                            {% csrf_token %}
-                            <button class="btn-small red darken-2" type="submit">Remove</button>
-                        </form>
+                        <p>{{ attendee }} <span><a href="{% url 'unassoc_attendee' event.id attendee.id %}">Remove</a></span></p>                        
                     </div>
                 </div>
             {% endfor %}
@@ -63,13 +57,7 @@
             {% for attendee in members_not_attending %}
             <div class="card">
                 <div class="card-content">
-                    <p>{{ attendee }}</p>
-                </div>
-                <div class="card-action">
-                    <form action="{% url 'assoc_attendee' event.id attendee.id %}" method="post">
-                        {% csrf_token %}
-                        <button class="btn-small green darken-2" type="submit">Add</button>
-                    </form>
+                    <p>{{ attendee }} <span><a href="{% url 'assoc_attendee' event.id attendee.id %}">Add</a></span></p>                    
                 </div>
             </div>
             {% endfor %}
