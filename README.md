@@ -8,9 +8,8 @@
 - [Key Features](#key-features)
 - [Technologies Used](#technologies-used)
 - [Deployed App](#deployed-app)
-- [Getting Started/Installation Instructions](#getting-startedinstallation-instructions)
+- [Getting Started](#getting-started)
 - [Icebox Items](#icebox-items)
-- [Contribution Guidelines](#contribution-guidelines)
 
 </details>
 
