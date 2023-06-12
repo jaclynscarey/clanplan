@@ -13,7 +13,7 @@ class Family(models.Model):
         
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    birthday = models.DateField(null=True, blank=True)
+    birthdate = models.DateField(null=True, blank=True)
     family = models.ForeignKey(Family, on_delete=models.CASCADE, related_name='members', null=True) # User's family
     
     def __str__(self):

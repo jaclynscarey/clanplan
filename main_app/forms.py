@@ -12,13 +12,13 @@ class ExtendedUserCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email',)
 
 class NewFamilyForm(ExtendedUserCreationForm):
-    birthday = forms.DateField(required=True)
+    birthdate = forms.DateField(required=True)
     family_name = forms.CharField(required=True)
     family_code = forms.CharField(required=True)
 
     class Meta(ExtendedUserCreationForm.Meta):
         model = User
-        fields = ExtendedUserCreationForm.Meta.fields + ('birthday',)
+        fields = ExtendedUserCreationForm.Meta.fields + ('birthdate',)
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -28,8 +28,8 @@ class NewFamilyForm(ExtendedUserCreationForm):
         if commit:
             user.save()
 
-            birthday = self.cleaned_data['birthday']
-            user_profile = UserProfile(user=user, birthday=birthday)
+            birthdate = self.cleaned_data['birthdate']
+            user_profile = UserProfile(user=user, birthdate=birthdate)
             user_profile.save()
 
             # logic to create Attendee
@@ -47,13 +47,13 @@ class NewFamilyForm(ExtendedUserCreationForm):
         return user
 
 class JoinFamilyForm(ExtendedUserCreationForm):
-    birthday = forms.DateField(required=True)
+    birthdate = forms.DateField(required=True)
     # family_name = forms.CharField(required=True)
     family_code = forms.CharField(required=True)
 
     class Meta(ExtendedUserCreationForm.Meta):
         model = User
-        fields = ExtendedUserCreationForm.Meta.fields + ('birthday',)
+        fields = ExtendedUserCreationForm.Meta.fields + ('birthdate',)
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -63,8 +63,8 @@ class JoinFamilyForm(ExtendedUserCreationForm):
         if commit:
             user.save()
 
-            birthday = self.cleaned_data['birthday']
-            user_profile = UserProfile(user=user, birthday=birthday)
+            birthdate = self.cleaned_data['birthdate']
+            user_profile = UserProfile(user=user, birthdate=birthdate)
             user_profile.save()
 
             # logic to create Attendee
