@@ -43,7 +43,6 @@ ClanPlan is built using the following technologies:
 * Frontend Framework: HTML, CSS, JavaScript
 * CSS Framework: Bootstrap - a popular CSS framework for building responsive and mobile-first websites
 * Database: PostgreSQL - a powerful, open-source object-relational database system
-* AJAX: Used for making asynchronous API calls and dynamic content updates
 * Hosting Platform: Heroku - a cloud platform for deploying and managing web applications
 
 
