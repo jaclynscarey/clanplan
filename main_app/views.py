@@ -75,7 +75,7 @@ def join_family(request):
 
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
-    fields = ['title', 'description', 'date', 'time', 'location']
+    fields = ['title', 'description', 'date', 'time', 'location', 'attendees']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
