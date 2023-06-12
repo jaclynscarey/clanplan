@@ -18,8 +18,12 @@
 ClanPlan is a powerful family planner app designed to help you and your family stay organized and manage your busy lives. With ClanPlan, you can easily schedule and coordinate events, keep track of important dates, and ensure everyone in your family is on the same page. 
 
 ## Screenshots
-
-
+![Screenshot 2023-06-12 at 5 31 14 AM](https://github.com/jaclynscarey/clanplan/assets/109121563/fbd50e85-a224-45a0-8224-e2ecfda12eb1)
+![Screenshot 2023-06-12 at 5 32 01 AM](https://github.com/jaclynscarey/clanplan/assets/109121563/c5748226-f2b4-4b5e-8f6c-9304722a40e3)
+![Screenshot 2023-06-12 at 5 32 21 AM](https://github.com/jaclynscarey/clanplan/assets/109121563/fbd63b47-26cc-45ef-a530-0414a4adb5b8)
+![Screenshot 2023-06-12 at 5 32 56 AM](https://github.com/jaclynscarey/clanplan/assets/109121563/4c73924b-0c6d-4232-8990-a56ffa7da32d)
+![Screenshot 2023-06-12 at 5 33 31 AM](https://github.com/jaclynscarey/clanplan/assets/109121563/9adc70c4-9538-42c9-b575-0b60b2a81596)
+![Screenshot 2023-06-12 at 5 34 03 AM](https://github.com/jaclynscarey/clanplan/assets/109121563/c0ff8cb3-3ed8-4c24-9973-48aec0a70a66)
 
 
 ## Key Features
