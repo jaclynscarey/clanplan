@@ -3,7 +3,7 @@
 
 {% if messages %}
     {% for message in messages %}
-        <p{% if message.tags %} class="{{ message.tags }} red-text"{% endif %}>{{ message }}</p>
+        <p class="text-danger">{{ message }}</p>
     {% endfor %}
 {% endif %}
 <br><br>

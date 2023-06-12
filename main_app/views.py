@@ -110,6 +110,6 @@ class EventDelete(LoginRequiredMixin, DeleteView):
     def dispatch(self, request, *args, **kwargs):
         event = self.get_object()
         if event.user != self.request.user:
-            messages.error(request, "You are not authorized to delete this event.")
+            messages.error(request, "You do not have permission to delete this event.")
             return redirect('detail', event_id=event.id)
         return super().dispatch(request, *args, **kwargs)
