@@ -14,7 +14,7 @@
 </ol>
 
 <div class=" mx-5">
-    <form method="POST" action="{% url 'events_create' %}">
+    <form method="POST" action="{% if object %}{% url 'events_update' object.id %}{% else %}{% url 'events_create' %}{% endif %}">
         <fieldset>
             <legend>{% if object %} Edit "{{ event.title }}" {% else %} Create New Event {% endif %}</legend>
             {% csrf_token %}
