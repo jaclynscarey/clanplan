@@ -2,11 +2,18 @@
 
 {% block content %}
 
+<br><br>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Events</a></li>
     {% if object %}
-        <h1>Edit <span class="teal-text">"{{object.title}}"</span></h1>
+    <li class="breadcrumb-item"><a href="{% url 'detail' object.id %}">{{ event.title }}</a></li>
+    <li class="breadcrumb-item active">Edit {{ event.title }}</li>
     {% else %}
-        <h1>New Event</h1>
+    <li class="breadcrumb-item active">New Event</li>
     {% endif %}
+</ol>
+
+
 
 <form method="post">
     {% csrf_token %}
