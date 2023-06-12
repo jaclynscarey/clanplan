@@ -21,7 +21,7 @@ def search_events(request):
                 # If events found, redirect to the event detail page of the first matching event
                 return redirect('detail', event_id=events[0].id)
             else:
-                messages.info(request, 'No events found.')
+                messages.info(request, 'Closest matching event. Please try again.')
         else:
             messages.info(request, 'Please enter a search query.')
     return redirect('index')  # Redirect back to the events index page
