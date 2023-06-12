@@ -12,10 +12,20 @@
 
 </details>
 
-
 ## Description
 
-ClanPlan is a powerful family planner app designed to help you and your family stay organized and manage your busy lives. With ClanPlan, you can easily schedule and coordinate events, keep track of important dates, and ensure everyone in your family is on the same page. 
+ClanPlan is a family planner app that helps you and your family stay organized and connected. With ClanPlan, you can manage your family's schedule, tasks, and important events all in one place. 
+
+Whether you're a parent coordinating everyone's activities or a family member looking to stay informed, ClanPlan has you covered. The app provides a simple and intuitive interface for seamless collaboration and communication within your family.
+
+ClanPlan makes family planning and coordination a breeze, bringing your family closer together and ensuring that everyone is on the same page. Sign up today and start organizing your family's life with ease!
+
+## Key Features
+
+* Event Scheduling: Easily create and manage shared events and appointments on the family calendar. Everyone can stay up to date with synchronized schedules.
+* Family Collaboration: Invite family members to join your ClanPlan and keep them informed about upcoming events and schedule changes.
+* User-friendly Interface: ClanPlan provides a simple and intuitive interface, making it easy for all family members to navigate and use the app.
+* Family Sign-up: New users can easily sign up and create a new family, or join an existing family using the unique family code provided by the family admin.
 
 ## Screenshots
 <img src="https://github.com/jaclynscarey/clanplan/assets/109121563/fbd50e85-a224-45a0-8224-e2ecfda12eb1" alt="Screenshot 1" width="400">
@@ -24,13 +34,6 @@ ClanPlan is a powerful family planner app designed to help you and your family s
 <img src="https://github.com/jaclynscarey/clanplan/assets/109121563/4c73924b-0c6d-4232-8990-a56ffa7da32d" alt="Screenshot 4" width="400">
 <img src="https://github.com/jaclynscarey/clanplan/assets/109121563/9adc70c4-9538-42c9-b575-0b60b2a81596" alt="Screenshot 5" width="400">
 <img src="https://github.com/jaclynscarey/clanplan/assets/109121563/c0ff8cb3-3ed8-4c24-9973-48aec0a70a66" alt="Screenshot 6" width="400">
-
-## Key Features
-
-* Event Scheduling: Effortlessly create and manage family events, including birthdays, anniversaries, appointments, and more.
-* Family Collaboration: Invite family members to join your ClanPlan and keep them informed about upcoming events and schedule changes.
-* User-friendly Interface: ClanPlan provides a simple and intuitive interface, making it easy for all family members to navigate and use the app.
-
 
 ## Technologies Used
 
