@@ -48,7 +48,7 @@ class NewFamilyForm(ExtendedUserCreationForm):
 
 class JoinFamilyForm(ExtendedUserCreationForm):
     birthday = forms.DateField(required=True)
-    family_name = forms.CharField(required=True)
+    # family_name = forms.CharField(required=True)
     family_code = forms.CharField(required=True)
 
     class Meta(ExtendedUserCreationForm.Meta):
@@ -72,9 +72,9 @@ class JoinFamilyForm(ExtendedUserCreationForm):
             attendee.save()
             
             # Logic to join existing Family
-            family_name = self.cleaned_data['family_name']
+            # family_name = self.cleaned_data['family_name']
             family_code = self.cleaned_data['family_code']
-            family = Family.objects.get(name=family_name, family_code=family_code)
+            family = Family.objects.get(family_code=family_code)
             user_profile.family = family
             user_profile.save()
             

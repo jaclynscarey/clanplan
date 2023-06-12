@@ -46,6 +46,7 @@ def signup(request):
             login(request, user)
             return redirect('index')
         else:
+            form = NewFamilyForm()
             error_message = 'Invalid sign up - try again'
 
     form = NewFamilyForm()
@@ -64,7 +65,8 @@ def join_family(request):
             login(request, user)
             return redirect('index')
         else:
-            error_message = 'Invalid family code - try again'
+            form = JoinFamilyForm()
+            error_message = 'Invalid sign up - try again'
 
     form = JoinFamilyForm()
     context = {

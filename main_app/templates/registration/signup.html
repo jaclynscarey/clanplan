@@ -3,7 +3,7 @@
 
 <h1>New Family Sign Up</h1>
 
-<p class="red-text">{{ error_message }}</p>
+<p class="text-danger">{{ error_message }}</p>
 
 <form method="POST" action="{% url 'signup' %}">
   {% csrf_token %}
