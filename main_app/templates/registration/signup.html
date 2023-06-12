@@ -1,26 +1,88 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>New Family Sign Up</h1>
+
+<br><br>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active">Sign Up</li>
+</ol>
 
 <p class="text-danger">{{ error_message }}</p>
 
-<form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
+<div class="mx-5">
+  <form action="{% url 'signup' %}" method="post">
+    <fieldset>
+      <legend>Sign Up: New Family</legend>
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="{{ form.username.id_for_label }}" class="form-label mt-4">Username:</label>
+        {{ form.username }}
+        <small class="form-text text-muted">Required. Letters, digits and @/./+/-/_ only.</small><br>
 
+        <label for="{{ form.first_name.id_for_label }}" class="form-label mt-4">First Name:</label>
+        {{ form.first_name }}
+
+        <label for="{{ form.last_name.id_for_label }}" class="form-label mt-4">Last Name:</label>
+        {{ form.last_name }}
+
+        <label for="{{ form.email.id_for_label }}" class="form-label mt-4">Email:</label>
+        {{ form.email }}
+
+        <label for="{{ form.birthdate.id_for_label }}" class="form-label mt-4">Birthdate:</label>
+        {{ form.birthdate }}
+
+        <label for="{{ form.password1.id_for_label }}" class="form-label mt-4">Password:</label>
+        {{ form.password1 }}
+        <small class="form-text text-muted">Your password can’t be too similar to your other personal information.</small><br>
+        <small class="form-text text-muted">Your password must contain at least 8 characters.</small><br>
+        <small class="form-text text-muted">Your password can’t be a commonly used password.</small><br>
+        <small class="form-text text-muted">Your password can’t be entirely numeric.</small><br>
+
+        <label for="{{ form.password2.id_for_label }}" class="form-label mt-4">Password Confirmation:</label>
+        {{ form.password2 }}
+        <small class="form-text text-muted">Enter the same password as before, for verification.</small><br>
+
+        <label for="{{ form.family_name.id_for_label }}" class="form-label mt-4">Family Name:</label>
+        {{ form.family_name }}
+        <small class="form-text text-muted">Case sensitive.</small><br>
+
+        <label for="{{ form.family_code.id_for_label }}" class="form-label mt-4">Family Code:</label>
+        {{ form.family_code }}
+        <small class="form-text text-muted">Case sensitive.</small><br><br>
+        <button class="btn btn-primary" type="submit">Sign Up</button><br><br>
+    </fieldset>
+  </form>
+</div>
 
 <script>
-  const dateEl = document.getElementById('id_birthday');
+    const usernameEl = document.getElementById("id_username");
+    usernameEl.setAttribute("class", "form-control");
 
-  M.Datepicker.init(dateEl, {
-      format: 'mmm dd, yyyy',
-      setDefaultDate: true,
-      autoClose: true,
-      yearRange: 100,
-  });
+    const firstNameEl = document.getElementById("id_first_name");
+    firstNameEl.setAttribute("class", "form-control");
 
+    const lastNameEl = document.getElementById("id_last_name");
+    lastNameEl.setAttribute("class", "form-control");
+
+    const emailEl = document.getElementById("id_email");
+    emailEl.setAttribute("class", "form-control");
+
+    const birthdateEl = document.getElementById("id_birthdate");
+    birthdateEl.setAttribute("class", "form-control");
+
+    const password1El = document.getElementById("id_password1");
+    password1El.setAttribute("class", "form-control");
+
+    const password2El = document.getElementById("id_password2");
+    password2El.setAttribute("class", "form-control");
+
+    const familyNameEl = document.getElementById("id_family_name");
+    familyNameEl.setAttribute("class", "form-control");
+
+    const familyCodeEl = document.getElementById("id_family_code");
+    familyCodeEl.setAttribute("class", "form-control");
 </script>
+
 {% endblock %}
