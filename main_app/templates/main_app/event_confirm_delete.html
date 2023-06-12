@@ -9,17 +9,14 @@
     <li class="breadcrumb-item active">Delete {{ event.title }}</li>
 </ol>
 
-<div class="card bg-light mb-3 m-auto" style="max-width: 20rem;">
-    <div class="card-header">You are about to delete:<br> "{{ object.title }}"</div>
-    <div class="card-body">
-        <h4 class="card-title">Are you sure you want to delete "{{ object.title }}"?</h4>
-    </div>
-    <div class="card-footer">
-        <form action="" method="post">
-            {% csrf_token %}
-            <button class="btn btn-secondary btn-sm" type="submit">Yes - Delete</button>
-            <button class="btn btn-primary btn-sm" type="button" onclick="window.location.href='{% url 'detail' object.id %}'">No - Cancel</button>
-    </div>
+<div class="alert alert-dismissible alert-warning">
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" onclick="window.location.href='{% url 'detail' object.id %}'"></button>
+        <h4 class="alert-heading">You are about to delete: "{{ object.title }}"</h4>
+        <p class="mb-0">Are you sure you want to delete "{{ object.title }}"?</p><br>
+        <button class="btn btn-secondary btn-sm" type="submit">Yes - Delete</button>
+    </form>
 </div>
 
 {% endblock %}
