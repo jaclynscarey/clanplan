@@ -7,9 +7,8 @@
 - [Screenshots](#screenshots)
 - [Key Features](#key-features)
 - [Technologies Used](#technologies-used)
-- [Deployed App](#deployed-app)
 - [Getting Started](#getting-started)
-- [Icebox Items](#icebox-items)
+- [Next Steps](#next-steps)
 
 </details>
 
@@ -50,7 +49,7 @@ The ClanPlan Family Planner app is deployed and can be accessed at: [https://cla
 ### Trello
 <a href="https://trello.com/b/dr0UbdA8/clanplan-family-planner" target="_blank">Trello Board used for planning</a>
 
-## Icebox Items
+## Next Steps
 
 The following features are planned for future implementation:
 
